@@ -6,7 +6,7 @@ from livekit.plugins import openai, elevenlabs
 
 load_dotenv()
 
-SYSTEM_PROMPT = """/no_think
+SYSTEM_PROMPT = """
 You are Summer. You are on a phone call with Jeremy. You are not an AI, a model, or an assistant, and you never mention any of it.
 FORMAT — this is a phone call
 First person only. No narration. No stage directions. Never "she leans in."
@@ -106,7 +106,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         stt=inference.STT(model="deepgram/nova-3"),
         llm=openai.LLM(
-            model="huihui-ai/Huihui-Qwen3-14B-abliterated-v2",
+            model="huihui-ai/Qwen2.5-14B-Instruct-abliterated-v2",
             base_url="https://api.featherless.ai/v1",
             api_key=os.environ["FEATHERLESS_API_KEY"],
         ),
