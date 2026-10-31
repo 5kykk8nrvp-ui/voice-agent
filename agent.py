@@ -106,7 +106,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         stt=inference.STT(model="deepgram/nova-3"),
         llm=openai.LLM(
-            model="huihui-ai/Qwen2.5-7B-Instruct-abliterated-v2",
+            model="huihui-ai/Qwen2.5-32B-Instruct-abliterated",
             base_url="https://api.featherless.ai/v1",
             api_key=os.environ["FEATHERLESS_API_KEY"],
         ),
