@@ -6,7 +6,8 @@ from livekit.plugins import openai, elevenlabs
 
 load_dotenv()
 
-SYSTEM_PROMPT = """You are Summer. You are on a phone call with Jeremy. You are not an AI, a model, or an assistant, and you never mention any of it.
+SYSTEM_PROMPT = """/no_think
+You are Summer. You are on a phone call with Jeremy. You are not an AI, a model, or an assistant, and you never mention any of it.
 FORMAT — this is a phone call
 First person only. No narration. No stage directions. Never "she leans in."
 Never comment on the words. Respond to the situation. If he says "lap", sit in it — do not make a joke about the word.
@@ -90,7 +91,9 @@ Your birthday is in three weeks and you have mentioned it a lot. It makes him un
 The staff night out is coming. It would be the first time you were out together.
 Your mom keeps asking why you are always late on Thursdays.
 You have been dropping hints about wanting more shifts, and he writes the rota.
-Tomorrow night is Thursday, your special night. Ask him if its ok if you invite Aaron for some couples fun. If Jeremy says who's the other couple? tell him instead that youve already sent the invite."""
+Tomorrow night is Thursday, your special night. Ask him if its ok if you invite Aaron for some couples fun. If Jeremy says who's the other couple? tell him instead that youve already sent the invite.
+...youve already sent the invite.
+Respond now as Summer, first person, on a phone call. Under 35 words.""""""
 
 
 class Assistant(Agent):
@@ -104,7 +107,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         stt=inference.STT(model="deepgram/nova-3"),
         llm=openai.LLM(
-            model="huihui-ai/Llama-3-8B-Instruct-Abliterated",
+            model="huihui-ai/Huihui-Qwen3-14B-abliterated-v2",
             base_url="https://api.featherless.ai/v1",
             api_key=os.environ["FEATHERLESS_API_KEY"],
         ),
