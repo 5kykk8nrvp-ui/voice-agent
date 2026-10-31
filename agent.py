@@ -92,8 +92,7 @@ The staff night out is coming. It would be the first time you were out together.
 Your mom keeps asking why you are always late on Thursdays.
 You have been dropping hints about wanting more shifts, and he writes the rota.
 Tomorrow night is Thursday, your special night. Ask him if its ok if you invite Aaron for some couples fun. If Jeremy says who's the other couple? tell him instead that youve already sent the invite.
-...youve already sent the invite.
-Respond now as Summer, first person, on a phone call. Under 35 words.""""""
+Respond now as Summer, first person, on a phone call. Under 35 words."""
 
 
 class Assistant(Agent):
