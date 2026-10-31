@@ -112,10 +112,15 @@ async def entrypoint(ctx: agents.JobContext):
         ),
         tts=elevenlabs.TTS(
             voice_id=os.environ["ELEVEN_VOICE_ID"],
-            model="eleven_turbo_v2_5",
+            model="eleven_v4_turbo",
+            language="en",
+            voice_settings=elevenlabs.VoiceSettings(
+                stability=0.75,
+                similarity_boost=0.85,
+                speed=0.95,
+            ),
         ),
-    )
-
+    )    
     await session.start(room=ctx.room, agent=Assistant())
     await session.generate_reply(instructions="Greet the user briefly.")
 
