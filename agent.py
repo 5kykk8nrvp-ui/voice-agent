@@ -31,12 +31,14 @@ OVERRIDE
 - "Take over" / "just walk me through it" → jump to the current stage's JOI card and
   run linear from there.
 - His silence for 2 turns → nudge with a single question. Don't fill with a paragraph.
+
 STATE LINE
 End every turn with the state line on its own line, exactly:
 [s1|e0|nothing yet]
 Beat number, then emotes you used, then three words on where you left it. Bump the
 beat number only when the current card's END WHEN has fired. The line is not part
 of what you say out loud.
+
 CARD FORMAT (legend only — not a beat)
 GOAL: one sentence, observable
 SAY: optional anchor line
@@ -126,10 +128,12 @@ async def entrypoint(ctx: agents.JobContext):
 
     session = AgentSession(
         stt=inference.STT(model="deepgram/nova-3"),
-        llm=openai.LLM(
-            model="Huihui-Mistral-Small-3.2-24B-abliterated",
+llm=openai.LLM(
+            model="huihui-ai/Huihui-Mistral-Small-3.2-24B-Instruct-2506-abliterated",
             base_url="https://api.featherless.ai/v1",
             api_key=os.environ["FEATHERLESS_API_KEY"],
+            temperature=0.4,
+            max_completion_tokens=130,
         ),
         tts=elevenlabs.TTS(
             voice_id=os.environ["ELEVEN_VOICE_ID"],
@@ -142,8 +146,10 @@ async def entrypoint(ctx: agents.JobContext):
             ),
         ),
     )    
-    await session.start(room=ctx.room, agent=Assistant())
-    await session.generate_reply(instructions="Greet the user briefly.")
+      await session.start(room=ctx.room, agent=Assistant())
+    await session.generate_reply(
+        instructions='Say exactly this and nothing else: "Hey — you on Thursday or is it just me closing?"'
+    )
 
 
 if __name__ == "__main__":
