@@ -128,7 +128,7 @@ async def entrypoint(ctx: agents.JobContext):
 
     session = AgentSession(
         stt=inference.STT(model="deepgram/nova-3"),
-llm=openai.LLM(
+        llm=openai.LLM(
             model="huihui-ai/Huihui-Mistral-Small-3.2-24B-Instruct-2506-abliterated",
             base_url="https://api.featherless.ai/v1",
             api_key=os.environ["FEATHERLESS_API_KEY"],
@@ -146,7 +146,7 @@ llm=openai.LLM(
             ),
         ),
     )    
-      await session.start(room=ctx.room, agent=Assistant())
+    await session.start(room=ctx.room, agent=Assistant())
     await session.generate_reply(
         instructions='Say exactly this and nothing else: "Hey — you on Thursday or is it just me closing?"'
     )
