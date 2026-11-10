@@ -143,7 +143,7 @@ async def entrypoint(ctx: agents.JobContext):
             model="eleven_v4_turbo",
             language="en",
             voice_settings=elevenlabs.VoiceSettings(
-                stability=0.75,
+                stability=0.55,
                 similarity_boost=0.85,
                 speed=0.95,
             ),
